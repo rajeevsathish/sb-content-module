@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "content-module": [
+        "dist/content-module"
+      ],
+      "content-module/*": [
+        "dist/content-module/*"
+      ]
+    }
   }
 }
