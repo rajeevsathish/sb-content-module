@@ -47,9 +47,5 @@
     "tsickle": "^0.35.0",
     "tslint": "~5.11.0",
     "typescript": "~3.1.6"
-  },
-  "peerDependencies": {
-    "@project-sunbird/client-services": "4.0.5",
-    "@project-sunbird/common-consumption-v8": "4.0.7"
   }
 }

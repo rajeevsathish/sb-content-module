@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^8.0.3",
-    "@angular/core": "^8.0.3"
+    "@angular/core": "^8.0.3",
+    "@project-sunbird/client-services": "4.0.5",
+    "@project-sunbird/common-consumption-v8": "4.0.7"
   }
 }
