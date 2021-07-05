@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "content-module": {
+    "content-section": {
       "projectType": "library",
-      "root": "projects/content-module",
-      "sourceRoot": "projects/content-module/src",
+      "root": "projects/content-section",
+      "sourceRoot": "projects/content-section/src",
       "prefix": "sb",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/content-module/tsconfig.lib.json",
-            "project": "projects/content-module/ng-package.json"
+            "tsConfig": "projects/content-section/tsconfig.lib.json",
+            "project": "projects/content-section/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/content-module/tsconfig.lib.prod.json"
+              "tsConfig": "projects/content-section/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/content-module/src/test.ts",
-            "tsConfig": "projects/content-module/tsconfig.spec.json",
-            "karmaConfig": "projects/content-module/karma.conf.js"
+            "main": "projects/content-section/src/test.ts",
+            "tsConfig": "projects/content-section/tsconfig.spec.json",
+            "karmaConfig": "projects/content-section/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/content-module/tsconfig.lib.json",
-              "projects/content-module/tsconfig.spec.json"
+              "projects/content-section/tsconfig.lib.json",
+              "projects/content-section/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -43,5 +43,5 @@
         }
       }
     }},
-  "defaultProject": "content-module"
+  "defaultProject": "content-section"
 }
