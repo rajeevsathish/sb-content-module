@@ -1,0 +1,4 @@
+<sb-library-cards-grid *ngIf="contentList?.length" [layoutConfig]="layoutConfig" [type]="cardType"
+  [title]="title" [maxCardCount]="maxCardCount" [contentList]="contentList" (menuClick)="onCardMenuClick($event)"
+  (cardClick)="onCardClick($event)">
+</sb-library-cards-grid>
