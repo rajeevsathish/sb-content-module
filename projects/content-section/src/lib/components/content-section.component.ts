@@ -20,7 +20,7 @@ const DEFAULT_LOADING = false;
 export class ContentSectionComponent implements OnInit {
 
   @Input() title: string = DEFAULT_TITLE;
-  @Input() searchRequest: IContentSearchRequest = { request: { filters: { channel: '01268904781886259221', primaryCategory: ['Collection', 'Resource', 'Content Playlist', 'Course', 'Course Assessment', 'Digital Textbook', 'eTextbook', 'Explanation Content', 'Learning Resource', 'Lesson Plan Unit', 'Practice Question Set', 'Teacher Resource', 'Textbook Unit', 'LessonPlan', 'FocusSpot', 'Learning Outcome Definition', 'Curiosity Questions', 'MarkingSchemeRubric', 'ExplanationResource', 'ExperientialResource', 'Practice Resource', 'TVLesson'], visibility: ['Default', 'Parent'] }, query: 'test', fields: ['name', 'appIcon', 'mimeType', 'gradeLevel', 'identifier', 'medium', 'pkgVersion', 'board', 'subject', 'resourceType', 'primaryCategory', 'contentType', 'channel', 'organisation', 'trackable'], softConstraints: { badgeAssertions: 98, channel: 100 }, mode: 'soft', facets: ['se_boards', 'se_gradeLevels', 'se_subjects', 'se_mediums', 'primaryCategory'] } };
+  @Input() searchRequest: IContentSearchRequest;
   @Input() layoutConfig = DEFAULT_LAYOUT_CONFIG;
   @Input() cardType: string = LibraryCardGridTypes.INFINITE_CARD_GRID;
   @Input() maxCardCount: number = DEFAULT_MAX_CARD_COUNT; /* Max card count to be shown */
@@ -41,7 +41,7 @@ export class ContentSectionComponent implements OnInit {
   fetchContents() {
     if (this.searchRequest) {
       console.log(this.searchRequest);
-      this.contentSectionService.search().subscribe((res: any) => {
+      this.contentSectionService.search(this.searchRequest).subscribe((res: any) => {
         console.log('res', res);
         this.contentList = res.content;
         this.count = res.count;

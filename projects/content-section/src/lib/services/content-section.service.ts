@@ -9,7 +9,7 @@ export class ContentSectionService {
 
   constructor(private http: HttpClient) { }
 
-  search() {
+  search(requestBody) {
     const body = {
       request:
       {
@@ -25,8 +25,9 @@ export class ContentSectionService {
         facets: ['se_boards', 'se_gradeLevels', 'se_subjects', 'se_mediums', 'primaryCategory']
       }
     };
-    return this.http.post('https://staging.sunbirded.org/api/content/v1/search?orgdetails=orgName,email', body).pipe(map((val: any) => {
-      return val.result;
-    }));
+    return this.http.post('https://staging.sunbirded.org/api/content/v1/search?orgdetails=orgName,email', requestBody)
+      .pipe(map((val: any) => {
+        return val.result;
+      }));
   }
 }
