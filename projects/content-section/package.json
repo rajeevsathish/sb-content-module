@@ -4,8 +4,8 @@
   "peerDependencies": {
     "@angular/common": "^9.1.13",
     "@angular/core": "^9.1.13",
-    "@project-sunbird/client-services": "4.0.5",
-    "@project-sunbird/common-consumption-v8": "4.0.7"
+    "@project-sunbird/client-services": ">= 4.0.5",
+    "@project-sunbird/common-consumption-v8": ">= 4.0.7"
   },
   "dependencies": {
     "tslib": "^1.10.0"
