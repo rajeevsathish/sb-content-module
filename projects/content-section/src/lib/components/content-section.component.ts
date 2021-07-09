@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { IContentSearchRequest } from './model';
 import { ContentSectionService } from '../services/content-section.service';
-import { IContent, LibraryCardGridTypes } from '@project-sunbird/common-consumption-v8';
+import { IContent } from '@project-sunbird/common-consumption-v9';
 
 const DEFAULT_LAYOUT_CONFIG = {
   source: '',
@@ -42,9 +42,7 @@ export class ContentSectionComponent implements OnInit {
 
   fetchContents() {
     if (this.searchRequest) {
-      console.log(this.searchRequest);
       this.contentSectionService.search(this.searchRequest).subscribe((res: any) => {
-        console.log('res', res);
         this.contentList = res.content;
         this.count = res.count;
       });

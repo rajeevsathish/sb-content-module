@@ -1,11 +1,11 @@
 {
   "name": "content-section",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "peerDependencies": {
     "@angular/common": ">= 9.1.13",
     "@angular/core": ">= 9.1.13",
     "@project-sunbird/client-services": ">= 4.0.5",
-    "@project-sunbird/common-consumption-v8": ">= 4.0.7"
+    "@project-sunbird/common-consumption-v9": ">= 4.1.1"
   },
   "dependencies": {
     "tslib": "^1.10.0"
