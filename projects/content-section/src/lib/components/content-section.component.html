@@ -1,4 +1,4 @@
-<sb-library-cards-grid *ngIf="contentList?.length" [layoutConfig]="layoutConfig" [type]="cardType"
-  [title]="title" [maxCardCount]="maxCardCount" [contentList]="contentList" (menuClick)="onCardMenuClick($event)"
-  (cardClick)="onCardClick($event)">
+<sb-library-cards-grid *ngIf="contentList?.length" [layoutConfig]="layoutConfig" [title]="title"
+  [maxCardCount]="maxCardCount" [contentList]="contentList" (menuClick)="onCardMenuClick($event)"
+  [viewMoreButtonText]='viewMoreButtonText' (viewMoreClick)="onViewMoreClick($event)" (cardClick)="onCardClick($event)">
 </sb-library-cards-grid>
