@@ -1,7 +1,9 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { IContentSearchRequest } from './model';
-import { ContentSectionService } from '../services/content-section.service';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { IContentSearchRequest } from '../model';
+import { ContentSectionService } from '../../services/content-section.service';
 import { IContent } from '@project-sunbird/common-consumption-v9';
+import { Utility } from '../utility';
+import { Subject } from 'rxjs';
 
 const DEFAULT_LAYOUT_CONFIG = {
   source: '',
@@ -18,7 +20,7 @@ const DEFAULT_VIEW_MORE_TEXT = 'View all';
   templateUrl: './content-section.component.html',
   styles: []
 })
-export class ContentSectionComponent implements OnInit {
+export class ContentSectionComponent implements OnInit, OnDestroy {
 
   @Input() title: string = DEFAULT_TITLE;
   @Input() searchRequest: IContentSearchRequest;
@@ -27,6 +29,7 @@ export class ContentSectionComponent implements OnInit {
   @Input() isMenu = false; /* Show Menu on each card */
   @Input() isLoading: boolean = DEFAULT_LOADING;
   @Input() viewMoreButtonText: string = DEFAULT_VIEW_MORE_TEXT;
+  @Input() sortBy: string;
 
   @Output() cardClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
   @Output() menuClick: EventEmitter<MouseEvent> = new EventEmitter();
@@ -34,6 +37,7 @@ export class ContentSectionComponent implements OnInit {
 
   contentList: IContent[] = [];
   count: number;
+  private unsubscribe$ = new Subject<void>();
   constructor(private contentSectionService: ContentSectionService) { }
 
   ngOnInit(): void {
@@ -43,7 +47,7 @@ export class ContentSectionComponent implements OnInit {
   fetchContents() {
     if (this.searchRequest) {
       this.contentSectionService.search(this.searchRequest).subscribe((res: any) => {
-        this.contentList = res.content;
+        this.contentList = this.sortBy ? res.content.concat().sort(Utility.sortBy(this.sortBy)) : res.content;
         this.count = res.count;
       });
     }
@@ -59,5 +63,10 @@ export class ContentSectionComponent implements OnInit {
 
   onViewMoreClick(event: MouseEvent) {
     this.viewMoreClick.emit(event);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
